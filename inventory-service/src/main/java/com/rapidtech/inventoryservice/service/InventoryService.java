@@ -19,15 +19,15 @@ public class InventoryService {
 
     @SneakyThrows
     public List<InventoryResponse> isInStock(List<String> skuCode){
-        log.info("Mulai menunggu");
-        Thread.sleep(10000);
-        log.info("Selesai menungu");
+        //log.info("Mulai menunggu");
+        //Thread.sleep(10000);
+        log.info("Selesai menunggu");
         return inventoryRepository.findBySkuCodeIn(skuCode).stream()
                 .map(inventory ->
-                    InventoryResponse.builder()
-                            .skuCode(inventory.getSkuCode())
-                            .isInStock(inventory.getQuantity()>0)
-                            .build()).toList();
+                        InventoryResponse.builder()
+                                .skuCode(inventory.getSkuCode())
+                                .isInStock(inventory.getQuantity()>0)
+                                .build()).toList();
     }
 
     public void insertInventory(InventoryRequest inventoryRequest){
