@@ -16,4 +16,9 @@ public class NotificationServiceApplication {
     public void handleNotification(OrderPlacedEvent orderPlacedEvent){
         log.info("Menerima notifikasi: - {}",orderPlacedEvent.getOrderNumber());
     }
+
+    @KafkaListener(topics = "notificationTopic")
+    public void handleNotification(GetProductEvent getProductEvent) {
+        log.info("Menerima notifikasi: - {}", getProductEvent.getId());
+    }
 }
